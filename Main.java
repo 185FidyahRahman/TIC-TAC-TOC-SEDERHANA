@@ -6,6 +6,12 @@ public class Main {
     static char currentPlayer = 'X';
 
     public static void main(String[] args) {
+
+            // Menambahkan pesan selamat datang
+            System.out.println("-----------------------------");
+            System.out.println("   Selamat Datang di Tic-Tac-Toe");
+            System.out.println("-----------------------------");
+
         while (true) {
             displayBoard();
 
