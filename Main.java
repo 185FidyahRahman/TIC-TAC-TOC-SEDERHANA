@@ -13,51 +13,48 @@ public class Main {
             System.out.println("-----------------------------");
 
         while (true) {
-            displayBoard();
+            displayBoard(board);
 
             int move = getPlayerMove();
             board[move] = currentPlayer;
 
             if (checkWinner()) {
-                displayBoard();
-                System.out.println("Player " + currentPlayer + " wins!");
+                displayBoard(board);
+                System.out.println("PEMAIN " + currentPlayer + " WINS!");
                 break;
             }
 
             if (isBoardFull()) {
-                displayBoard();
-                System.out.println("It's a tie!");
+                displayBoard(board);
+                System.out.println("SERI !");
                 break;
             }
 
-            switchPlayer();
+            GantiPemain();
         }
     }
 
-    static void displayBoard() {
-        System.out.println(board[0] + " | " + board[1] + " | " + board[2]);
-        System.out.println("--|---|--");
-        System.out.println(board[3] + " | " + board[4] + " | " + board[5]);
-        System.out.println("--|---|--");
-        System.out.println(board[6] + " | " + board[7] + " | " + board[8]);
+    static void displayBoard(char[] board) {
+        PapanCatur displayBoard = new PapanCatur(board);
+        displayBoard.displayBoard();
     }
 
     static int getPlayerMove() {
         Scanner scanner = new Scanner(System.in);
         int move;
         while (true) {
-            System.out.print("Player " + currentPlayer + ", enter your move (1-9): ");
+            System.out.print("Pemain " + currentPlayer + ", Pilih langkahmu  (1-9): ");
             move = scanner.nextInt() - 1;
             if (move >= 0 && move < 9 && board[move] == ' ') {
                 break;
             } else {
-                System.out.println("Invalid move. Please choose an empty position.");
+                System.out.println("Langkah tidak valid. Silakan pilih posisi yang kosong.");
             }
         }
         return move;
     }
 
-    static void switchPlayer() {
+    static void GantiPemain() {
         currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
     }
 
